@@ -2,6 +2,7 @@ package com.example.customerservice.controller;
 
 import com.example.customerservice.entity.Customer;
 import com.example.customerservice.service.CustomerService;
+import io.github.resilience4j.ratelimiter.annotation.RateLimiter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
@@ -23,7 +24,9 @@ public class CustomerController {
     @GetMapping("/{id}")
     @Cacheable("customer")
     public Customer findCustomerById(@PathVariable("id") Long customerId){
-        return customerService.findCustomerById(customerId);
+        Customer c = null;
+            c = customerService.findCustomerById(customerId);
+        return c;
     }
 
 }
