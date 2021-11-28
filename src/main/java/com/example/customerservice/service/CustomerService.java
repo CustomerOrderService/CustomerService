@@ -16,8 +16,9 @@ public class CustomerService {
     public Customer saveCustomer(Customer customer){
         return customerRepository.save(customer);
     }
-    @Cacheable("customer")
+
     public Customer findCustomerById(Long id){
+        System.out.println("Find by id from DB");
         return customerRepository.findById(id).get();
     }
 
