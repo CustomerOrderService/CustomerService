@@ -1,4 +1,5 @@
 package com.example.customerservice.service;
+import java.util.List;
 
 import com.example.customerservice.entity.Customer;
 import com.example.customerservice.repository.CustomerRepository;
@@ -19,6 +20,13 @@ public class CustomerService {
         return customerRepository.save(customer);
     }
 
+    public List<Customer> getAllCustomer(){
+        return customerRepository.findAll();
+    }
+
+    public void deleteCustomer(Long cusId){
+         customerRepository.deleteById(cusId);
+    }
 
     @Retry(name = "retryService", fallbackMethod = "localCacheCustomerSearch")
     @RateLimiter(name = "basic")
