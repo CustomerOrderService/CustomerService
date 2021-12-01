@@ -10,7 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
-@Controller
+@RestController
 @RequestMapping("/customers")
 @Slf4j
 public class CustomerController {
@@ -18,7 +18,7 @@ public class CustomerController {
     @Autowired
     private CustomerService customerService;
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
+    @RequestMapping(value = "/", produces = "application/json" ,method = {RequestMethod.GET, RequestMethod.PUT})
     public List<Customer> getAllCustomer(){
         return customerService.getAllCustomer();
     }
