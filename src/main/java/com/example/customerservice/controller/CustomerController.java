@@ -11,14 +11,14 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/customers")
+//@RequestMapping("/customers")
 @Slf4j
 public class CustomerController {
 
     @Autowired
     private CustomerService customerService;
 
-    @RequestMapping(value = "/", produces = "application/json" ,method = {RequestMethod.GET, RequestMethod.PUT})
+    @RequestMapping(value = "/", produces = "application/json" ,method = RequestMethod.GET)
     public List<Customer> getAllCustomer(){
         return customerService.getAllCustomer();
     }
